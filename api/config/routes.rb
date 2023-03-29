@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
+  match '*path', via: [:options], to: lambda {|_| [200, { 'Content-Type' => 'text/plain' }, ['OK']] }
+
 
   # user
   post '/users', to: 'users#register'
